@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/css/adminDashboard.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<title>COM'E'IT</title>
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">RepresentativeHub</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="#EventUpdates">
+					<i class='bx bxs-group'></i>
+					<span class="text">Event Updates</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Media">
+					<i class='bx bxs-doughnut-chart'></i>
+					<span class="text">Event Gallery</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Participant">
+					<i class='bx bxs-message-dots'></i>
+					<span class="text">Participant</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#Result">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Result</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Poll">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Poll</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Poll Result</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="/logout" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Categories</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<section class="EventUpdates" id="EventUpdates">
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Event Updates</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Dashboard</a>
+							</li>
+							<li><i class='bx bx-chevron-right'></i></li>
+							<li>
+								<a class="active" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+
+
+				</div>
+
+				<!--collage heads -->
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Event Updates</h3>
+							<i class='bx bx-search'></i>
+							<i class='bx bx-filter'></i>
+							<form class="" action="/calender" method="get" enctype="multipart/form-data">
+								<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+								<button type="submit" class="btn btn-warning" name="button" value="Upload Media">Upload</button>
+							</form>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Event Name</th>
+									<th>description</th>
+									<th>Activity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% events.forEach(function(event) {%>
+								<tr>
+									<td>
+										<h4><%=event.title%></h4>
+									</td>
+									<td>
+										<p>
+										<h4><%=event.content%></h4>
+										</p>
+									</td>
+									<form class="" action="/eventDelete" method="post">
+										<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+									<td><button type="submit" class="btn btn-warning" name="delete" value="<%=event._id%>">Delete</button></td>
+									</form>
+									</tr>
+								</tr>
+								<%})%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+		</section>
+		<!-- MAIN -->
+	</section>
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+
+		<section class="Media" id="Media">
+			<!-- MAIN -->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Event Gallery</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Dashboard</a>
+							</li>
+							<li><i class='bx bx-chevron-right'></i></li>
+							<li>
+								<a class="active" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+					<form class="" action="/UploadMedia" enctype="multipart/form-data">
+						<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+						<button type="submit" class="btn btn-warning" name="button" value="teacherRepresentativeDashboard">Upload</button>
+					</form>
+				</div>
+
+				<!--collage heads -->
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Gallery</h3>
+							<i class='bx bx-search'></i>
+							<i class='bx bx-filter'></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Media</th>
+									<th>Info</th>
+									<th>Activity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% items.forEach(function(item) {%>
+								<tr>
+									<td>
+										<img src='data:<%= item.contentType %>;base64,<%= item.imageBase64 %>'>
+									</td>
+									<td>
+										<p>
+
+										<h4><%=item.description%></h4>
+										</p>
+									</td>
+									<form class="" action="/DeleteMedia" method="post">
+										<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+										<td><button type="submit" name="delete" value="<%=item._id%>" class="btn btn-warning">Delete</button></td>
+									</form>
+								</tr>
+								<%})%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+
+				<!-- end teacher -->
+			</main>
+		</section>
+
+		<!-- MAIN -->
+	</section>
+
+
+
+
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+
+		<section class="Participant" id="Participant">
+			<!-- MAIN -->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Participant</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Dashboard</a>
+							</li>
+							<li><i class='bx bx-chevron-right'></i></li>
+							<li>
+								<a class="active" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+				<!--collage heads -->
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Particiapnt Candidates</h3>
+							<i class='bx bx-search'></i>
+							<i class='bx bx-filter'></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Events</th>
+									<th>Activity</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<% events.forEach(function(event) {%>
+									<tr>
+										<td>
+											<h4><%=event.title%></h4>
+										</td>
+										<form class="" action="/participant" method="post">
+										<td><button type="submit" class="btn btn-warning" name="register" value="<%=event._id%>">Participant Candidate</button></td>
+										</form>
+										</tr>
+									</tr>
+									<%})%>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+			</main>
+		</section>
+
+		<!-- MAIN -->
+	</section>
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<section class="Result" id="Result">
+			<!-- MAIN -->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Result</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Dashboard</a>
+							</li>
+							<li><i class='bx bx-chevron-right'></i></li>
+							<li>
+								<a class="active" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+					<form class="" action="/UploadResult" enctype="multipart/form-data">
+						<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+						<button type="submit" class="btn btn-warning" name="button" value="Upload Media">Upload</button>
+					</form>
+				</div>
+
+				<!--collage heads -->
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Gallery</h3>
+							<i class='bx bx-search'></i>
+							<i class='bx bx-filter'></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Profile</th>
+									<th>Info</th>
+									<th>Activity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% results.forEach(function(item) {%>
+									<form class="" action="/DeleteResult" method="post">
+										<tr>
+											<td>
+												<img src='data:<%= item.contentType %>;base64,<%= item.imageBase64 %>'>
+											</td>
+											<td>
+												<p>
+												<h4><%=item.name%></h4>
+												<h5><%=item.post%></h5>
+												</p>
+											</td>
+											<td>
+												<h4><%=item.competition%></h4>
+											</td>
+											<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+											<td><button type="submit" name="delete" value="<%=item._id%>" class="btn btn-warning">Delete</button></td>
+										</tr>
+									</form>
+									<%})%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+
+				<!-- end teacher -->
+			</main>
+		</section>
+
+		<!-- MAIN -->
+	</section>
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+
+		<section class="Poll" id="Poll">
+			<!-- MAIN -->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Poll</h1>
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">Dashboard</a>
+							</li>
+							<li><i class='bx bx-chevron-right'></i></li>
+							<li>
+								<a class="active" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+					<form class="" action="/pollForm" enctype="multipart/form-data">
+						<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+						<button type="submit" class="btn btn-warning" name="button" value="Upload Media">Upload</button>
+					</form>
+				</div>
+
+
+				<!-- poll -->
+				<div class="table-data">
+					<div class="order">
+						<table>
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Options</th>
+									<th>Votes</th>
+									<th>Activity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% polls.forEach(function(item) {%>
+									<form class="" action="/DeletePoll" method="post">
+										<tr>
+											<td>
+												<h4><%=item.topic%></h4>
+											</td>
+											<td>
+												<p>
+													<%for(var i=0;i<item.choices.length;i++){%>
+													<h4><%=item.choices[i].value%></h4>
+													<%}%>
+												</p>
+
+											</td>
+											<td>
+												<p>
+													<%for(var i=0;i<item.choices.length;i++){%>
+													<h4><%=item.choices[i].votes%></h4>
+													<%}%>
+												</p>
+											</td>
+											<input type="text" name="page" value="teacherRepresentativeDashboard" hidden>
+											<td><button type="submit" name="delete" value="<%=item._id%>" class="btn btn-warning">Delete</button></td>
+										</tr>
+									</form>
+									<%})%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+
+				<!-- end teacher -->
+			</main>
+		</section>
+
+		<!-- MAIN -->
+	</section>
+
+
+	<script src="/script/adminDashboard.js"></script>
+</body>
+
+</html>

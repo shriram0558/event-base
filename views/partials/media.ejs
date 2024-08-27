@@ -1,0 +1,71 @@
+<!-- CONTENT -->
+<section  id="content">
+  <!-- NAVBAR -->
+
+<section class="Media" id="media">
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+          <h1>Event Media</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+      <form class="" action="/UploadMedia" enctype="multipart/form-data">
+      <button type="submit" class="btn btn-warning" name="button" value="Upload Media">Upload</button>
+      </form>
+    </div>
+
+    <!--collage heads -->
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Gallery</h3>
+          <i class='bx bx-search' ></i>
+          <i class='bx bx-filter' ></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Media</th>
+              <th>Info</th>
+              <th>Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% items.forEach(function(item) {%>
+            <tr>
+              <td>
+                <img src='data:<%= item.contentType %>;base64,<%= item.imageBase64 %>'>
+              </td>
+              <td><p>
+
+                <h4>Media</h4>
+                <h5>Media</h5>
+              </p></td>
+              <form class="" action="/DeleteMedia" method="post">
+                   <td><button type="submit" name="delete" value="<%=item._id%>" class="btn btn-warning">Delete</button></td>
+                </form>
+            </tr>
+              <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+    <!-- end teacher -->
+  </main>
+</section>
+
+  <!-- MAIN -->
+</section>

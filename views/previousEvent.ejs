@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>COM'E'IT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Previous Events</title>
+  <link rel="stylesheet" href="css/previousEvent.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Muli:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="img-wrapper">
+      <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#previousEvent">Previous Events</a></li>
+            <li><a href="#winners">Winners</a></li>
+            <li><a href="#plans">Our Plans</a></li>
+        </ul>
+      </nav>
+      <img src="images/previousEventImages/bg1.jpg" />
+    </div>
+    <div class="banner">
+      <h1>Past Events </h1>
+      <p>If coming events are said to cast their shadows before, past events cannot fall to leave their impress behind them.</p>
+      <button>Discover now</button>
+    </div>
+  </header>
+
+  <!--Previous_Events start-->
+  <section class="speciality" id="previousEvent">
+
+    <div class="section-header">
+      <h1 class="section-heading">Previous Events</h1>
+      <!-- <div class="underline"></div> -->
+    </div>
+
+
+    <div class="box-container">
+      <% previousEvents.forEach(function(previousEvent){ %>
+      <div class="box">
+        <div class="content">
+
+          <h3><%= previousEvent.title %></h></h3>
+          <p><%= previousEvent.content %></p></p>
+        </div>
+      </div>
+          <%  }) %>
+    </div>
+
+
+  </section>
+
+  <!--Previous_Events -->
+  <section class="winners" id="winners">
+    <div class="section-header">
+      <h1 class="section-heading">Winners</h1>
+      <div class="underline"></div>
+    </div>
+    <div class="cards-wrapper">
+      <div class="card" data-tilt>
+        <div class="card-img-wrapper">
+          <img src="../images/previousEventImages/sakshi.jpg" alt="CEO" />
+        </div>
+        <div class="card-info">
+          <h2>Sakshi Lawande</h2>
+          <h3>1st</h3>
+          <p>
+          Quiz Competition 2k21
+          </p>
+
+        </div>
+      </div>
+      <div class="card" data-tilt>
+        <div class="card-img-wrapper">
+          <img src="images/previousEventImages/Shru.jpeg" alt="Designer" />
+        </div>
+        <div class="card-info">
+          <h2>Srushti Walunj</h2>
+          <h3>2nd</h3>
+          <p>
+            Wall Magzine
+          </p>
+
+        </div>
+      </div>
+
+      <div class="card" data-tilt>
+        <div class="card-img-wrapper">
+          <img src="images/previousEventImages/rutu.jpeg" alt="Architect" />
+        </div>
+        <div class="card-info">
+          <h2>Rutuja Sonawane</h2>
+          <h3>3rd</h3>
+          <p>
+            Project Competition
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comming_soon" id="plans">
+    <div class="section-header">
+      <h1 class="section-heading">Our Plans... For You...</h1>
+      <div class="underline"></div>
+    </div>
+
+    <div class="video-wrapper">
+      <video playsinline autoplay muted loop poster="cake.jpg">
+        <source src="images/previousEventImages/back.mp4" type="video/webm">
+
+      </video>
+      <button class="btn">Intrested</button>
+    </div>
+    </div>
+  </section>
+  <a href="#" class="scroll-btn">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+  </div>
+
+  <script src="script/previousEvents.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="script/tilt.js"></script>
+</body>
+
+</html>

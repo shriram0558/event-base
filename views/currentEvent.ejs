@@ -1,0 +1,255 @@
+<html>
+
+<head>
+  <title>COM'E'IT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+  <!--Bootstrap 4-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link href="/css/currentEvent2.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/currentEvent.css">
+  <link rel="stylesheet" href="css/eventCal.css">
+  <link rel="stylesheet" href="/css/Result.css">
+  <link rel="stylesheet" href="/css/pollStyle.css">
+  <!--font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+<body>
+  <section class="home" id="home">
+    <div class="header">
+      <div class="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/currentEvent#poll">Polls</a></li>
+          <li><a href="/currentEvent#event">Upcoming event</a></li>
+          <li><a href="/currentEvent#Result">Result</a></li>
+        </ul>
+
+      </div>
+
+      <video autoplay loop class="back-video" muted plays-inline>
+        <source src="images/media/video.mp4" type="video/mp4">
+      </video>
+      <section class="coming-soon">
+
+        <div>
+          <h2>A Fest Like Never Before</h2>
+          <div class="countdown">
+            <div class="container-day">
+              <h3 class="day">Time</h3>
+              <h3>Day</h3>
+            </div>
+            <div class="container-hour">
+              <h3 class="hour">Time</h3>
+              <h3>hour</h3>
+            </div>
+            <div class="container-minute">
+              <h3 class="minute">Time</h3>
+              <h3>minute</h3>
+            </div>
+            <div class="container-second">
+              <h3 class="second">Time</h3>
+              <h3>Second</h3>
+            </div>
+          </div>
+        </div>
+        <!-- <img class="waiting" src="./images/example1.jpg" /> -->
+      </section>
+      <script src="script/currentEvent.js"></script>
+    </div>
+  </section>
+
+  <!-- //poll <section> -->
+  <section class="poll" id="poll">
+    <div class="row">
+
+        <%polls.forEach(function(poll){%>
+            <div class="col-md-6">
+                <form onsubmit="vote(event)" id="<%=poll._id%>">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-arrow-right" style="color:aliceblue"><%=poll.topic%></span>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                              <%for(var i=0;i<poll.choices.length;i++){%>
+                                    <li class="list-group-item">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="<%=i%>">
+                                                <%=poll.choices[i].value%>
+                                                <!-- <input type="text" name="optionName" value="<%=poll.choices[i].value%>" hidden> -->
+                                                <div class="alignright" id="vote-count-<%=poll.choices[i]._id%>"><%=poll.choices[i].votes%></div>
+                                            </label>
+                                        </div>
+                                    </li>
+                                <%}%>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <input type="submit" id="vote-btn-<%=poll._id%>" class="btn btn-primary btn-sm" value="Vote">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        <%})%>
+    </div>
+
+  </section>
+
+  <!-- event calender -->
+  <section class="event" id="event">
+    <div class="event-container">
+      <br /><br /> <br />
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3 class="animate-charcter">
+              <center>
+                Heyyy Are You Excited!!! <br />here is 2022 Upcoming Events List
+              </center>
+            </h3>
+            <br /><br />
+          </div>
+        </div>
+      </div>
+
+      <% postEvents.forEach(function(postEvent){ %>
+      <div class="event">
+        <div class="event-left">
+          <div class="event-date">
+            <div class="date"><%= postEvent.date %></div>
+            <br>
+          </div>
+
+         <div class="register">
+          <form action="payment" method="POST">
+            <input type="text" name="eventID" value="<%= postEvent._id %>" hidden>
+          <script
+             src="//checkout.stripe.com/v2/checkout.js"
+             class="stripe-button"
+             data-label="register"
+             data-value="<%= postEvent._id %>"
+             data-key="<%= key %>"
+             data-amount="<%= postEvent.amount %>"
+             data-currency="inr"
+             data-name="GPP Event"
+             data-description="GPP Event Payment"
+             data-locale="auto" >
+
+           </script>
+           </form>
+           
+        </div>
+
+        </div>
+
+        <div class="event-right">
+          <h3 class="event-title"><%= postEvent.title %></h3>
+
+          <div class="event-description">
+            <%= postEvent.content %>
+          </div>
+
+          <div class="event-timing">
+            <%= postEvent.time %>
+         </div> 
+
+        </div>
+      </div>
+      <%  }) %>
+     
+    </div>
+  </section>
+
+  <!-- result -->
+  <section class="Result" id="Result">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 pt-5 pb-2 ourTeam-hedding text-center">
+          
+          <h1>Our Winners🏆</h1>
+        </div>
+      </div>
+      <div class
+      ="row">
+        <% results.forEach(function(result) {%>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+
+          <div class="row section-success ourTeam-box text-center">
+            <div class="col-md-12 section1">
+              <img src='data:<%= result.contentType %>;base64,<%= result.imageBase64 %>'>
+            </div>
+            <div class="col-md-12 section2 pb-3">
+              <p><%=result.name%></p>
+              <span><%=result.post%>🥇</span>
+            </div>
+            <div class="col-md-12 section3">
+              <br />
+              <%=result.competition%>
+              <br />
+              <br />
+            </div>
+          </div>
+        </div>
+        <%})%>
+
+      </div>
+    </div>
+  </section>
+  <!-- end here result -->
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    function vote(event) {
+          var pollId = event.target.id;
+          var choice = event.target.optionsRadios.value;
+          axios.post('/' + pollId + '/vote', {choice: choice, socketId: socketId});
+          document.querySelector('#vote-btn-'+ pollId).disabled = true;
+          var voteCount = document.querySelector('#vote-count-' + pollId);
+          voteCount.textContent++;
+          voteCount.style.color = 'blue';
+          voteCount.style.fontWeight = '900';
+
+      };
+  </script>
+
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <script>
+      var pusher = new Pusher('22789a5356f573c4df49', { cluster: 'ap2' });
+      var socketId;
+
+      // retrieve the socket ID once we're connected
+      pusher.connection.bind('connected', function() {
+          socketId = pusher.connection.socket_id;
+      });
+
+      pusher.subscribe('poll-events')
+              .bind('vote', function (data) {
+                  var pollId = data.pollId;
+                  var choice = data.choice;
+                  var voteCount = document.querySelector('#vote-count-' + pollId);
+                  voteCount.textContent++;
+
+                  // we'll flash the colour for a moment
+                  var color = voteCount.style.color;
+                  setTimeout(function () {
+                      voteCount.style.color = color;
+                  }, 2000);
+                    voteCount.style.color = 'green';
+              });
+  </script>
+</body>
+
+</html>

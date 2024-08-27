@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html>
+<head>
+  <link href="/css/EditPage.css" rel="stylesheet" type="text/css">
+  <title>COM'E'IT</title>
+  </head>
+<body>
+
+<center>
+  <%student%>
+  <form class="Edit" action="<%=path%>" method="post" enctype="multipart/form-data">
+    <input type="file" name="pics" id="formFile">
+    <br>
+    <br>
+    <input type="text" name="name" value="<%=student.name%>">
+    <br>
+    <br>
+    <input type="text" name="post" value="<%=student.post%>">
+    <br>
+    <br>
+    <input type="email" name="email" value="<%=student.email%>">
+    <br>
+    <br>
+    <input type="number" name="mobile" value="<%=student.mobile%>">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-warning" id="btn" name="update" value="<%=student._id%>">Update</button>
+
+  </form>
+  </center>
+</body>
+</html>

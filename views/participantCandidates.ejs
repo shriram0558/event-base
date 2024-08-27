@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>COM'E'IT</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Design || Future Web</title>
+  <link rel="stylesheet" href="css/participantCandidate.css" />
+</head>
+
+<body>
+  <div class="header_fixed">
+    <table>
+      <thead>
+        <tr>
+          <th>S No.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile No</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+
+          <% eventRegisters.forEach(function(eventRegister) {%>
+          <tr>
+            <td>1</td>
+            <td><%=eventRegister.name%></td>
+            <td><%=eventRegister.email%></td>
+            <td><%=eventRegister.mobile_no%></td>
+          </tr>
+         <%})%>
+        
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

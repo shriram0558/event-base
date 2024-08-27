@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>COM'E'IT</title>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/pollStyle.css">
+  </head>
+  <body>
+    <div class="row">
+
+        <%polls.forEach(function(poll){%>
+            <div class="col-md-6">
+                <form onsubmit="vote(event)" id="<%=poll._id%>">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-arrow-right"><%=poll.topic%></span>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                              <%for(var i=0;i<poll.choices.length;i++){%>
+                                    <li class="list-group-item">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="<%=i%>">
+                                                <%=poll.choices[i].value%>
+                                                <!-- <input type="text" name="optionName" value="<%=poll.choices[i].value%>" hidden> -->
+                                                <div class="alignright" id="vote-count-<%=poll.choices[i]._id%>"><%=poll.choices[i].votes%></div>
+                                            </label>
+                                        </div>
+                                    </li>
+                                <%}%>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <input type="submit" id="vote-btn-<%=poll._id%>" class="btn btn-primary btn-sm" value="Vote">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        <%})%>
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      function vote(event) {
+            // event.preventDefault();
+            var pollId = event.target.id;
+            // alert(pollId);
+            var choice = event.target.optionsRadios.value;
+            // var choiceVal=event.target.optionName.value;
+            // alert(choiceVal);
+            axios.post('/' + pollId + '/vote', {choice: choice, socketId: socketId});
+            document.querySelector('#vote-btn-'+ pollId).disabled = true;
+            var voteCount = document.querySelector('#vote-count-' + pollId);
+            // // alert(voteCount);
+            // // alert(voteCount.textContent);
+            voteCount.textContent++;
+            //   // alert(voteCount.textContent);
+            voteCount.style.color = 'blue';
+            voteCount.style.fontWeight = '900';
+
+        };
+    </script>
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>
+        var pusher = new Pusher('22789a5356f573c4df49', { cluster: 'ap2' });
+        var socketId;
+
+        // retrieve the socket ID once we're connected
+        pusher.connection.bind('connected', function() {
+            socketId = pusher.connection.socket_id;
+        });
+
+        pusher.subscribe('poll-events')
+                .bind('vote', function (data) {
+                    var pollId = data.pollId;
+                    var choice = data.choice;
+                    var voteCount = document.querySelector('#vote-count-' + pollId);
+                    // alert(voteCount);
+                    voteCount.textContent++;
+
+                    // we'll flash the colour for a moment
+                    var color = voteCount.style.color;
+                    setTimeout(function () {
+                        voteCount.style.color = color;
+                    }, 2000);
+                      voteCount.style.color = 'green';
+
+                        // chart.render()
+                });
+    </script>
+
+  </body>
+</html>

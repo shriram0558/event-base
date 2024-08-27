@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Design by foolishdeveloper.com -->
+<head>
+  <title>COM'E'IT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Our Team Section</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/TeacherCoordinator.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+<body>
+  <div class="home">
+    <div id="nav">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/DisplayTeacherRespresentative#head">Collage Heads</a></li>
+                <li><a href="/DisplayTeacherRespresentative#teacher">Teacher Respresentatives</a></li>
+            </ul>
+        </nav>
+        <header>
+          <main>
+          <section>
+        <h3>Welcome To CompIT</h3>
+        <h1>OUR TEACHERS ARE<span class="change_content"> </span> <span style="margin-top: -10px;"> | </span> </h1>
+        <p>"Knowledge,Sprit and Service"</p>
+        </section>
+        </main>
+        </header>
+  </div>
+
+ <div class="team-area" id="head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-team">
+          <div class="img-area" id="imgarea1">
+            <img src="/images/pricipal.jpg" class="img-responsive" alt="">
+          </div>
+          <div class="img-text">
+            <h4>Dr V Bandle</h4>
+            <h5>Principal,GPP</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-team">
+          <div class="img-area" id="imgarea1">
+            <img src="/images/CMHOD_P.jpg"  class="img-responsive" alt="">
+          </div>
+          <div class="img-text">
+            <h4>S B Nikam</h4>
+            <h5>HOD,Computer Engineer</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-team">
+          <div class="img-area" id="imgarea1">
+            <img src="/images/HODIT.jpg" class="img-responsive" alt="">
+          </div>
+          <div class="img-text">
+            <h4>M U Kokate</h4>
+            <h5>HOD,Information Technology</h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="space">
+
+</div>
+<!-- For Teacher -->
+<div class="container" id="teacher">
+    <h1 class="heading"><span>meet</span> Our Teachers</h1>
+
+    <div class="profiles">
+      <% items.forEach(function(item) {%>
+      <div class="profile">
+        <img src='data:<%= item.contentType %>;base64,<%= item.imageBase64 %>' class="profile-img">
+
+        <h3 class="user-name"><%=item.name%></h3>
+        <h5><%=item.post%></h5>
+      </div>
+        <%})%>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COM'E'IT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/calender.css">
+</head>
+<body>
+<section class"form1">
+<h1> <center>
+  Event Form
+</center></h1>
+<div class="container">
+  <form action="/calender" method="post">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Event Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="eventName" placeholder="Event name.." required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Description</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="subject">Select Date</label>
+        </div>
+      <div class="col-85">
+      <input type="date" name="date" required />
+    </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Select Time</label>
+      </div>
+    <div class="col-85">
+    <input type="time" name="time" required />
+  </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="amount">Payment Amount</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="amount" name="eventAmount"  required>
+    </div>
+  </div>
+
+    <br />
+    <div class="row">
+      <center>
+        <input type="submit" class="button" value="Submit">
+      </center>
+    </div>
+  </form>
+</div>
+</section>
+</body>
+</html>

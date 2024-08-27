@@ -1,0 +1,60 @@
+
+<!DOCTYPE>
+<html>
+<head>
+  <title>COM'E'IT</title>
+  <style>
+    .button1 {
+    background-color: #04AA6D; /* Green */
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .edit{
+    padding: 40px;
+    margin-top: 90px;
+  }
+  input[type=text], select {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  </style>
+  </head>
+<body>
+<center>
+  <h1>Media Form </h>
+<form class="edit" action="/UploadMedia" method="post" enctype="multipart/form-data" style="width:50%;background-color:pink;">
+  <input type="file" name="medias" id="formFile" multiple ><br /><br /><br /><br />
+  <input type="text" name="description" id="description" placeholder="Title"></input></br></br><br /><br />
+  <button type="submit" class="button1" name="button" value="Upload Media">Upload</button>
+
+</form>
+</center>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>COM'E'IT</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<% polls.forEach(function(poll){ %>
+<div id="chartContainer-<%=poll._id%>" name="chartPoll" value="chartContainer-<%=poll._id%>" style="height: 370px; width: 100%;"></div>
+<%})%>
+
+
+  <script type="text/javascript">
+
+          display();
+
+          function display() {
+              // var poll= event.target.chartPoll.value;
+          polls.forEach(function(poll) {
+            var chart = new CanvasJS.Chart("chartContainer-"+poll._id,{
+              theme: "light1",
+              animationEnabled: true,
+              title: {
+                text: poll[1].topic
+              },
+              data: [{
+                type: "bar",
+                dataPoints: [{
+                    label: poll.choices[1].value,
+                    y: poll.choice[1].votes
+                  },
+                  {
+                    label: poll.choices[2].value,
+                    y: poll.choice[2].votes
+                  },
+                  {
+                    label: poll.choices[3].value,
+                    y: poll.choice[3].votes
+                  },
+                  {
+                    label: poll.choices[4].value,
+                    y: poll.choice[4].votes
+                  }
+                ]
+              }]
+            })
+            chart.render();
+          })
+          }
+  </script>
+
+
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
+     </script>
+</body>
+
+</html>
